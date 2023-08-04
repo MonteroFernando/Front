@@ -1,0 +1,100 @@
+#Boton_Ej1{
+    background-color: cornflowerblue;
+    color: white;
+    padding: 20px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;/*Hace que cambiel cursor a una mano cuando pasa sobre el*/
+    box-shadow: 2px 2px 4px grey;
+}
+
+#Boton_Ej1:hover{
+    box-shadow: 4px 4px 8px rgb(66, 66, 66);
+}
+
+#Box_ej2{
+    display:flex;
+    flex-direction: row;
+    width: 100px;
+    height: 100px;
+    border: 2;
+    background-color: aquamarine;
+    box-shadow: 2px 2px 4px;
+    align-items: center;
+}
+
+.elemento{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    /*animation-name: rotate;*/
+    animation-duration: 5s;
+    animation-delay: 0s;
+    border-radius: 10px;
+}
+.elemento:hover{
+    animation-name: rotate;
+}
+@keyframes rotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+    0%{
+        background-color: blue;
+    }
+    50%{
+        background-color: blueviolet;
+    }
+    100%{
+        background-color: red;
+    }
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 0.2fr 0.4fr 0.6fr;
+    gap: 10px;
+}
+.item{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(34, 221, 59);
+    
+}
+.large{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300;
+    height: 100;
+    background-color: rgb(62, 62, 233);
+    grid-column: span 2;
+    
+}
+
+.product-card{
+    display: flex;
+    background-color: antiquewhite;
+
+}
+.product-info{
+    color: darkgreen;
+    font-size: 30px;
+    animation-name: rotate;
+    animation-duration: 5s;
+
+}
+@keyframes efecto1{
+    0%{
+        transform: translateX(0px);
+    }
+    80%{
+        transform: translate(20px);
+    }
+}
