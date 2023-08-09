@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicio 11 JS</title>
+    <style>
+        ul {
+        list-style: none;
+        padding: 0;
+        }
+    </style>
+</head>
+<body>
+  <h1>Calendario de Eventos</h1>
+  <div>
+    <input type="date" id="datePicker">
+    <button onclick="mostrarEventos()">Mostrar Eventos</button>
+  </div>
+  <h2>Eventos para el día seleccionado:</h2>
+  <ul id="eventList"></ul>
+
+  <script>
+    // Objeto para representar eventos
+    class Evento {
+      constructor(nombre, hora) {
+        this.nombre = nombre;
+        this.hora = hora;
+      }
+    }
+
+    // Array de eventos (puedes agregar más eventos aquí)
+    const eventos = [
+      new Evento("Reunión de equipo", "10:00 AM"),
+      new Evento("Almuerzo", "12:30 PM"),
+      new Evento("Presentación", "3:00 PM"),
+    ];
+
+    // Función para mostrar eventos para el día seleccionado
+    function mostrarEventos() {
+      const datePicker = document.getElementById("datePicker");
+      const selectedDate = new Date(datePicker.value);
+      const eventList = document.getElementById("eventList");
+      eventList.innerHTML = "";
+
+      const eventosDelDia = eventos.filter(evento => {
+        const fechaEvento = new Date(selectedDate);
+        const horaEvento = evento.hora.split(" ");
+        const horaPartes = horaEvento[0].split(":");
+        fechaEvento.setHours(parseInt(horaPartes[0], 10), parseInt(horaPartes[1], 10));
+
+        return fechaEvento.getTime() === selectedDate.getTime();
+      });
+
+      if (eventosDelDia.length > 0) {
+        eventosDelDia.forEach(evento => {
+          const listItem = document.createElement("li");
+          listItem.textContent = `${evento.hora} - ${evento.nombre}`;
+          eventList.appendChild(listItem);
+        });
+      } else {
+        const listItem = document.createElement("li");
+        listItem.textContent = "No hay eventos programados para este día.";
+        eventList.appendChild(listItem);
+      }
+    }
+  </script>
+</body>
+</html>
